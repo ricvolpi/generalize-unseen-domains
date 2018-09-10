@@ -45,7 +45,7 @@ class TrainOps(object):
 	if not os.path.exists(self.model_save_path):
 	    os.makedirs(self.model_save_path)
 
-	self.add_train_iters = config.getint('MAIN_SETTINGS', 'add_train_iters')
+	self.train_iters = config.getint('MAIN_SETTINGS', 'train_iters')
 	self.k = config.getint('MAIN_SETTINGS', 'k')	
 	self.batch_size = config.getint('MAIN_SETTINGS', 'batch_size')
 	self.model.batch_size = self.batch_size
@@ -54,8 +54,6 @@ class TrainOps(object):
 	self.model.learning_rate_max = config.getfloat('MAIN_SETTINGS', 'learning_rate_max')
 	self.T_adv = config.getint('MAIN_SETTINGS', 'T_adv')
 	self.T_min = config.getint('MAIN_SETTINGS', 'T_min')
-
-	self.train_iters = int(self.k * self.T_min + 1) 
 	
     def load_svhn(self, split='train'):
 
@@ -115,11 +113,13 @@ class TrainOps(object):
 
 	    summary_writer = tf.summary.FileWriter(logdir=self.log_dir, graph=tf.get_default_graph())
 
+	    counter_k = 0
+
 	    print 'Training'
-	    for t in range(self.train_iters + self.add_train_iters):
+	    for t in range(self.train_iters):
 
 		#train_iters is defined by k in the load_config method	
-		if ((t+1) % self.T_min == 0) and (t < self.train_iters): #if T_min iterations are passed and T_adv > 0
+		if ((t+1) % self.T_min == 0) and (counter_k < self.k): #if T_min iterations are passed
 		    print 'Generating adversarial images.'
 		    for start, end in zip(range(0, self.no_images, self.batch_size), range(self.batch_size, self.no_images, self.batch_size)): #going through the dataset
 			feed_dict = {self.model.z: source_train_images[start:end], self.model.labels: source_train_labels[start:end]} 
@@ -141,6 +141,8 @@ class TrainOps(object):
 		    npr.shuffle(rnd_indices)
 		    source_train_images = source_train_images[rnd_indices]
 		    source_train_labels = source_train_labels[rnd_indices]
+
+		    counter_k+=1
 		    
 		i = t % int(source_train_images.shape[0] / self.batch_size)
 

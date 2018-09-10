@@ -1,5 +1,6 @@
 data/
-exp/
+model/
+logs/
 *.pyc
 *.pkl
 *.txt

@@ -1,0 +1,30 @@
+[EXPERIMENT_SETTINGS]
+
+source_dataset = mnist
+target_dataset = svhn
+no_images = 10000
+
+[MAIN_SETTINGS]
+
+train_iters = 10001
+# number of samples in each batch
+batch_size = 32
+# learning rate min
+learning_rate_min = 0.0001
+# learning rate max
+learning_rate_max = 1.0
+# gamma 
+gamma = 1.0
+# max iterations
+T_adv = 15
+# min iterations
+T_min = 100
+k = 6
+
+[MODEL_SETTINGS]
+# number of classes
+no_classes = 10
+# number of color channels
+no_channels = 3
+# size of the images
+img_size = 32
