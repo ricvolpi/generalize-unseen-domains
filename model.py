@@ -11,6 +11,11 @@ class Model(object):
 	self.img_size = 32
 	self.no_channels = 3
 
+	#Adam hyperparameters
+	self.beta1 = 0.9
+	self.beta2 = 0.999
+	self.epsilon = 0.000001
+
     def encoder(self, images, reuse=False, return_feat=False):
 
 	images = tf.reshape(images, [-1, self.img_size, self.img_size, self.no_channels])
@@ -73,7 +78,8 @@ class Model(object):
 	self.max_loss = self.max_loss_1 - self.gamma * self.max_loss_2
 
 	#we use Adam for the minimizer and vanilla SGD for the maximizer 
-	self.min_optimizer = tf.train.AdamOptimizer(self.learning_rate_min, epsilon = 0.000001) 
+	#self.min_optimizer = tf.train.AdamOptimizer(self.learning_rate_min, epsilon=0.000001) 
+	self.min_optimizer = tf.train.AdamOptimizer(self.learning_rate_min, self.beta1, self.beta2, self.epsilon) 
 	self.max_optimizer = tf.train.GradientDescentOptimizer(self.learning_rate_max) 
 
 	#minimizer

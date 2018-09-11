@@ -121,7 +121,7 @@ class TrainOps(object):
 		#train_iters is defined by k in the load_config method	
 		if ((t+1) % self.T_min == 0) and (counter_k < self.k): #if T_min iterations are passed
 		    print 'Generating adversarial images.'
-		    for start, end in zip(range(0, self.no_images, self.batch_size), range(self.batch_size, self.no_images, self.batch_size)): #going through the dataset
+		    for start, end in zip(range(0, self.no_images, self.batch_size), range(self.batch_size, self.no_images, self.batch_size)): 
 			feed_dict = {self.model.z: source_train_images[start:end], self.model.labels: source_train_labels[start:end]} 
 
 			#assigning the current batch of images to the variable to learn z_hat
