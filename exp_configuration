@@ -6,6 +6,7 @@ no_images = 10000
 
 [MAIN_SETTINGS]
 
+# training iterations
 train_iters = 10001
 # number of samples in each batch
 batch_size = 32
@@ -19,6 +20,7 @@ gamma = 1.0
 T_adv = 15
 # min iterations
 T_min = 100
+# number of adversarial phases
 k = 3
 
 [MODEL_SETTINGS]
