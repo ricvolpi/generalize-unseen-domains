@@ -117,10 +117,8 @@ class TrainOps(object):
 
 	    print 'Training'
 	    for t in range(self.train_iters):
-
-		#train_iters is defined by k in the load_config method	
 		if ((t+1) % self.T_min == 0) and (counter_k < self.k): #if T_min iterations are passed
-		    print 'Generating adversarial images.'
+		    print 'Generating adversarial images [iter %d]'%(counter_k)
 		    for start, end in zip(range(0, self.no_images, self.batch_size), range(self.batch_size, self.no_images, self.batch_size)): 
 			feed_dict = {self.model.z: source_train_images[start:end], self.model.labels: source_train_labels[start:end]} 
 
@@ -156,7 +154,7 @@ class TrainOps(object):
 		sess.run([self.model.min_train_op, self.model.min_loss], feed_dict) 
 
 		#evaluating the model
-		if t % 50 == 0:
+		if t % 250 == 0:
 
 		    summary, min_l, max_l, acc = sess.run([self.model.summary_op, self.model.min_loss, self.model.max_loss, self.model.accuracy], feed_dict)
 

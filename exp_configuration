@@ -19,7 +19,7 @@ gamma = 1.0
 T_adv = 15
 # min iterations
 T_min = 100
-k = 6
+k = 3
 
 [MODEL_SETTINGS]
 # number of classes
