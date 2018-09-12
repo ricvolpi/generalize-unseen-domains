@@ -44,10 +44,6 @@ class Model(object):
 	self.logits = self.encoder(self.z)
 	self.logits_hat = self.encoder(self.z_hat, reuse=True)
 
-	#this is just for the softmax method
-	self.softmax_logits = tf.nn.softmax(self.logits)
-	self.extracted_features = self.encoder(self.z, return_feat=True, reuse=True)
-
 	#for evaluation
 	self.pred = tf.argmax(self.logits, 1)
 	self.correct_pred = tf.equal(self.pred, self.labels)
