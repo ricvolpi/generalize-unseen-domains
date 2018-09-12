@@ -11,8 +11,6 @@ import glob
 from numpy.linalg import norm
 from scipy import misc
 
-sys.path.append('../functions')
-
 import utils
 
 class TrainOps(object):
