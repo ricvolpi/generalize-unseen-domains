@@ -193,7 +193,6 @@ class TrainOps(object):
 	    restorer = tf.train.Saver(variables_to_restore)
 	    restorer.restore(sess, os.path.join(self.model_save_path,'encoder'))
 
-
 	    N = 100 #set accordingly to GPU memory
 	    target_accuracy = 0
 	    target_loss = 0
