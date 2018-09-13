@@ -11,8 +11,6 @@ import glob
 from numpy.linalg import norm
 from scipy import misc
 
-sys.path.append('../functions')
-
 import utils
 
 class TrainOps(object):
@@ -192,7 +190,6 @@ class TrainOps(object):
 	    variables_to_restore = slim.get_model_variables(scope='encoder')
 	    restorer = tf.train.Saver(variables_to_restore)
 	    restorer.restore(sess, os.path.join(self.model_save_path,'encoder'))
-
 
 	    N = 100 #set accordingly to GPU memory
 	    target_accuracy = 0
