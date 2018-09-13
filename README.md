@@ -26,7 +26,9 @@ sh download_svhn.sh
 To train the model, run
 
 ```
-sh run_exp.sh
+sh run_exp.sh GPU_IDX
 ```
+
+where GPU_IDX is the index of the GPU to be used.
 
  
