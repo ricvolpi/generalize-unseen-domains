@@ -19,6 +19,7 @@ Python 2.7, Tensorflow 1.6.0
 To obtain MNIST and SVHN dataset, run
 
 ```
+mkdir data
 python download_and_process_mnist.py
 sh download_svhn.sh
 ```
