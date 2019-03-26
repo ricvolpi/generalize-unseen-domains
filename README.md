@@ -12,7 +12,7 @@
 
 ### Prerequisites
 
-Python 2.7, Tensorflow 1.6.0
+Python 2.7, Tensorflow 1.12.0
 
 ## How it works
 
@@ -27,9 +27,8 @@ sh download_svhn.sh
 To train the model, run
 
 ```
-sh run_exp.sh GPU_IDX
+python main.py --mode=train_MODE --gpu=GPU_IDX -- exp_dir=./
 ```
-
-where GPU_IDX is the index of the GPU to be used.
+where MODE can be one of {ERM, RDA, RSDA, ESDA} GPU_IDX is the index of the GPU to be used.
 
  
