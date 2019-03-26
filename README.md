@@ -40,7 +40,7 @@ python main.py --mode=test_MODE --gpu=GPU_IDX -- exp_dir=EXP_DIR
 where MODE can be one of {RS, ES}. For ES, population size POP_SIZE and mutation rate ETA can be set as
  
 ```
-python main.py --mode=test_MODE --gpu=GPU_IDX -- exp_dir=EXP_DIR --pop_size=POP_SIZE --mutation_rate=ETA
+python main.py --mode=test_ES --gpu=GPU_IDX -- exp_dir=EXP_DIR --pop_size=POP_SIZE --mutation_rate=ETA
 ```
 
 ##
@@ -53,6 +53,7 @@ MNIST-M, SYN and USPS testing are currently commented out, uncomment them when y
 
 ##
 
+If one desires to include more transformations, or explore different magnitude ranges of the provided one, modifications to transformations_ops.py should be straightforward. Please, let me know if anything doesn't work, or if you have any useful feedback! 
 
 
 
