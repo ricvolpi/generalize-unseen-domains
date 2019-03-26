@@ -45,6 +45,7 @@ To test performance on all digit datasets (MNIST, SVHN, MNIST-M, SYN, USPS), run
 ```
 python main.py --mode=test_all --gpu=GPU_IDX -- exp_dir=EXP_DIR
 ```
+MNIST-M, SYN and USPS testing are currently commented out, uncomment them when you have downloaded the datasets. Loading code in included in train_ops.py.
 
 ##
 
