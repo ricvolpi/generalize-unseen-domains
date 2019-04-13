@@ -32,3 +32,8 @@ sh run_exp.sh GPU_IDX
 
 where GPU_IDX is the index of the GPU to be used.
 
+## Related work
+
+If you are interested in the topic, you might also like [this](https://arxiv.org/abs/1903.11900) (related repo [here](https://github.com/ricvolpi/domain-shift-robustness))
+
+
